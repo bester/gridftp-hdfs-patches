@@ -1,0 +1,26 @@
+diff -u -r gridftp-hdfs-0.5.4.orig/configure.ac gridftp-hdfs-0.5.4/configure.ac
+--- gridftp-hdfs-0.5.4.orig/configure.ac	2012-06-15 09:01:47.000000000 -0400
++++ gridftp-hdfs-0.5.4/configure.ac	2013-07-17 10:30:33.186071731 -0400
+@@ -1,8 +1,8 @@
+ #                                               -*- Autoconf -*-
+ # Process this file with autoconf to produce a configure script.
+-AC_INIT([gridftp-hdfs], [0.5.4], [osg-hadoop@opensciencegrid.org])
++AC_INIT([gridftp-hdfs], [0.5.4])
+ 
+-AM_INIT_AUTOMAKE([gridftp-hdfs], [0.5.4])
++AM_INIT_AUTOMAKE
+ 
+ AC_CONFIG_SRCDIR([src/gridftp_hdfs.c])
+ #AC_CONFIG_HEADER([config.h])
+diff -u -r gridftp-hdfs-0.5.4.orig/src/Makefile.am gridftp-hdfs-0.5.4/src/Makefile.am
+--- gridftp-hdfs-0.5.4.orig/src/Makefile.am	2013-07-17 10:28:55.624071731 -0400
++++ gridftp-hdfs-0.5.4/src/Makefile.am	2013-07-17 10:31:18.052071731 -0400
+@@ -2,7 +2,7 @@
+ lib_LTLIBRARIES = libglobus_gridftp_server_hdfs.la
+ 
+ JNIHDIR=@JNIHDIR@
+-INCLUDES= -I$(JNIHDIR) -I$(JNIHDIR)/linux @INCLUDE@
++AM_CPPFLAGS = -I$(JNIHDIR) -I$(JNIHDIR)/linux @INCLUDE@
+ 
+ #libglobus_gridftp_server_hdfs_la_SOURCES = globus_gridftp_server_hdfs.c
+ libglobus_gridftp_server_hdfs_la_LDFLAGS = -lhdfs -lcrypto -lz -lglobus_gridftp_server -R/etc/alternatives/java_sdk/jre/lib/amd64/server 

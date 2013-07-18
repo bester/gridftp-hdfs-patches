@@ -1,0 +1,12 @@
+diff -ur gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs_send.c gridftp-hdfs-0.5.4/src/gridftp_hdfs_send.c
+--- gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs_send.c	2012-06-15 08:57:50.000000000 -0400
++++ gridftp-hdfs-0.5.4/src/gridftp_hdfs_send.c	2013-01-11 08:55:23.000000000 -0500
+@@ -409,7 +409,7 @@
+         hdfs_handle->nbytes[idx] = read_length;
+         hdfs_handle->offsets[idx] = hdfs_handle->offset;
+ 
+-        if ((hdfs_read_handle = globus_malloc(sizeof(hdfs_read_t*))) == NULL) {
++        if ((hdfs_read_handle = globus_malloc(sizeof(hdfs_read_t))) == NULL) {
+             MemoryError(hdfs_handle, "Unable to allocate read handle", rc)
+             break;
+         }

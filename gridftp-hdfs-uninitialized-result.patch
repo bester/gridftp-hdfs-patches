@@ -1,0 +1,12 @@
+diff -u -r gridftp-hdfs-0.5.4.orig/src/gridftp_hdfs.c gridftp-hdfs-0.5.4/src/gridftp_hdfs.c
+--- gridftp-hdfs-0.5.4.orig/src/gridftp_hdfs.c	2013-07-18 13:12:05.677071731 -0400
++++ gridftp-hdfs-0.5.4/src/gridftp_hdfs.c	2013-07-18 13:15:25.355071731 -0400
+@@ -279,7 +279,7 @@
+     globus_gfs_command_info_t *         cmd_info,
+     void *                              user_arg)
+ {
+-    globus_result_t                    result;
++    globus_result_t                    result = GLOBUS_FAILURE;
+     globus_l_gfs_hdfs_handle_t *       hdfs_handle;
+     char *                             PathName;
+     GlobusGFSName(hdfs_command);

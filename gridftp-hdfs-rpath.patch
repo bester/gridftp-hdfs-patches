@@ -1,0 +1,12 @@
+diff -ru gridftp-hdfs-0.5.4/src/Makefile.am gridftp-hdfs-0.5.4.patched/src/Makefile.am
+--- gridftp-hdfs-0.5.4/src/Makefile.am	2012-12-14 16:39:21.000000000 -0500
++++ gridftp-hdfs-0.5.4.patched/src/Makefile.am	2012-12-14 16:36:51.000000000 -0500
+@@ -5,7 +5,7 @@
+ INCLUDES= -I$(JNIHDIR) -I$(JNIHDIR)/linux @INCLUDE@
+ 
+ #libglobus_gridftp_server_hdfs_la_SOURCES = globus_gridftp_server_hdfs.c
+-libglobus_gridftp_server_hdfs_la_LDFLAGS = -lhdfs -lcrypto -lz -lglobus_gridftp_server
++libglobus_gridftp_server_hdfs_la_LDFLAGS = -lhdfs -lcrypto -lz -lglobus_gridftp_server -R/etc/alternatives/java_sdk/jre/lib/amd64/server 
+ libglobus_gridftp_server_hdfs_la_SOURCES = \
+     gridftp_hdfs.h \
+     gridftp_hdfs_error.h \

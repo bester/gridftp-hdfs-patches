@@ -1,0 +1,33 @@
+diff -ur gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs.h gridftp-hdfs-0.5.4/src/gridftp_hdfs.h
+--- gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs.h	2012-06-15 09:01:25.000000000 -0400
++++ gridftp-hdfs-0.5.4/src/gridftp_hdfs.h	2013-01-11 10:32:52.000000000 -0500
+@@ -40,6 +40,7 @@
+     char *                              pathname;
+     hdfsFS                              fs;
+     hdfsFile                            fd;
++    globus_off_t                        file_size; // size of the file for reads
+     globus_size_t                       block_size;
+     globus_off_t                        op_length; // Length of the requested read/write size
+     globus_off_t                        offset;
+diff -ur gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs_send.c gridftp-hdfs-0.5.4/src/gridftp_hdfs_send.c
+--- gridftp-hdfs-0.5.4.patched/src/gridftp_hdfs_send.c	2012-06-15 08:57:50.000000000 -0400
++++ gridftp-hdfs-0.5.4/src/gridftp_hdfs_send.c	2013-01-11 11:12:45.000000000 -0500
+@@ -133,6 +133,7 @@
+             GenericError(hdfs_handle, "The file you are trying to read is a directory", rc)
+             goto cleanup;
+         }
++        hdfs_handle->file_size = fileInfo->mSize;
+     } else {
+         errno = ENOENT;
+         SystemError(hdfs_handle, "opening file for read", rc);
+@@ -392,6 +393,10 @@
+                 && (hdfs_handle->op_length < (globus_ssize_t)hdfs_handle->block_size)) {
+             read_length = hdfs_handle->op_length;
+         }
++        if ((hdfs_handle->offset + read_length) > hdfs_handle->file_size)
++        {
++            read_length = hdfs_handle->file_size - hdfs_handle->offset;
++        }
+ 
+         // Short-circuit the case where we are done
+         if (read_length == 0) {
