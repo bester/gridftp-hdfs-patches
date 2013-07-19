@@ -37,7 +37,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # On SL6, build fails since java-devel pulls in java-1.5.0-gcj
 #  which has libjvm in /usr/lib64/gcj-4.4.0 and gcc can't find it.
-%if 0%{?rhel} == 6
+%if 0%{?rhel} == 6 && 0%{?_osg} > 0
 BuildRequires: jdk java-1.6.0-sun-compat
 %else
 BuildRequires: java-devel
