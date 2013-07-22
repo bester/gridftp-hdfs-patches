@@ -1,0 +1,5 @@
+gridftp-hdfs (0.5.4-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Joseph Bester <bester@squeeze.local>  Fri, 19 Jul 2013 13:42:34 -0400

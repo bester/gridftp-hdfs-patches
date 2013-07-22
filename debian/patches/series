@@ -1,0 +1,10 @@
+hadoop200.patch
+gridftp-hdfs-link.patch
+gridftp-hdfs-config.patch
+gridftp-hdfs-rpath.patch
+gridftp-hdfs-read_t.patch
+gridftp-hdfs-readsize.patch
+gridftp-hdfs-classpath.patch
+gridftp-hdfs-automake-modernize.patch
+gridftp-hdfs-libjvm.patch
+gridftp-hdfs-uninitialized-result.patch
